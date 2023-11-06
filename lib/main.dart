@@ -10,6 +10,8 @@ void main() {
     statusBarColor: Colors.transparent,
   ));
   runApp(const MyApp());
+
+  
 }
 
 class MyApp extends StatelessWidget {
