@@ -1,8 +1,8 @@
-import 'package:easy_stepper/easy_stepper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pageapp/ingredientsCard.dart';
 import 'package:pageapp/appPage.dart';
+import 'package:pageapp/widget/easy_step.dart';
 import 'package:readmore/readmore.dart';
 
 class MealPage extends StatefulWidget {
@@ -51,172 +51,88 @@ class _MealPageState extends State<MealPage> {
           ),
           SliverList(
               delegate: SliverChildListDelegate([
-            SizedBox(
-                height: 2000,
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 20, top: 20),
-                  child: SingleChildScrollView(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Center(
-                          child: SizedBox(
-                            width: 60,
-                            height: 5,
-                            child: Divider(
-                              color: Colors.grey.shade400,
-                              thickness: 5,
-                            ),
-                          ),
+            Padding(
+              padding: const EdgeInsets.only(left: 20, top: 20),
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Center(
+                      child: SizedBox(
+                        width: 60,
+                        height: 5,
+                        child: Divider(
+                          color: Colors.grey.shade400,
+                          thickness: 5,
                         ),
-                        const SizedBox(height: 15),
-                        productTopStage(),
-                        const SizedBox(height: 20),
-                        const Text(
-                          "Nutrition",
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.w600),
-                        ),
-                        const SizedBox(height: 20),
-                        SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            children: [
-                              nutritionCard("assets/icons/fire.svg", "180kCal"),
-                              nutritionCard(
-                                  "assets/icons/fats.svg", "30g fats"),
-                              nutritionCard(
-                                  "assets/icons/protein.svg", "20kCal"),
-                              nutritionCard(
-                                  "assets/icons/carb.svg", "40g carbs"),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(height: 20),
-                        const Text(
-                          "Descriptions",
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.w600),
-                        ),
-                        const SizedBox(height: 20),
-                        descriptions(),
-                        const SizedBox(height: 20),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 40),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              const Text(
-                                "Ingredients That You \nWill Need",
-                                style: TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.w600),
-                              ),
-                              Text("${ingredients.length} items"),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(height: 20),
-                        ingredientsCard(),
-                        const SizedBox(height: 20),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 40),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              const Text(
-                                "Step by Step",
-                                style: TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.w600),
-                              ),
-                              Text("${ingredients.length} items"),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(height: 20),
-                        EasyStepper(
-                          fitWidth: true,
-                          alignment: Alignment.topLeft,
-                          activeStepBackgroundColor: Colors.white,
-                          enableStepTapping: true,
-                          direction: Axis.vertical,
-                          activeStep: activeStep,
-                          onStepReached: (index) =>
-                              setState(() => activeStep = index),
-                          steps: [
-                            EasyStep(
-                              customStep: CircleAvatar(
-                                radius: 8,
-                                backgroundColor: Colors.white,
-                                child: CircleAvatar(
-                                  radius: 7,
-                                  backgroundColor: activeStep >= 0
-                                      ? Colors.orange
-                                      : Colors.white,
-                                ),
-                              ),
-                              title: 'Waiting',
-                              topTitle: true,
-                            ),
-                            EasyStep(
-                              customStep: CircleAvatar(
-                                radius: 8,
-                                backgroundColor: Colors.white,
-                                child: CircleAvatar(
-                                  radius: 7,
-                                  backgroundColor: activeStep >= 1
-                                      ? Colors.orange
-                                      : Colors.white,
-                                ),
-                              ),
-                              title: 'Order Received',
-                              topTitle: true,
-                            ),
-                            EasyStep(
-                              customStep: CircleAvatar(
-                                radius: 8,
-                                backgroundColor: Colors.white,
-                                child: CircleAvatar(
-                                  radius: 7,
-                                  backgroundColor: activeStep >= 2
-                                      ? Colors.orange
-                                      : Colors.white,
-                                ),
-                              ),
-                              title: 'Preparing',
-                            ),
-                            EasyStep(
-                              customStep: CircleAvatar(
-                                radius: 8,
-                                backgroundColor: Colors.white,
-                                child: CircleAvatar(
-                                  radius: 7,
-                                  backgroundColor: activeStep >= 3
-                                      ? Colors.orange
-                                      : Colors.white,
-                                ),
-                              ),
-                              title: 'On Way',
-                              topTitle: true,
-                            ),
-                            EasyStep(
-                              customStep: CircleAvatar(
-                                radius: 8,
-                                backgroundColor: Colors.white,
-                                child: CircleAvatar(
-                                  radius: 7,
-                                  backgroundColor: activeStep >= 4
-                                      ? Colors.orange
-                                      : Colors.white,
-                                ),
-                              ),
-                              title: 'Delivered',
-                            ),
-                          ],
-                        )
-                      ],
+                      ),
                     ),
-                  ),
-                )),
+                    const SizedBox(height: 15),
+                    productTopStage(),
+                    const SizedBox(height: 20),
+                    const Text(
+                      "Nutrition",
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+                    ),
+                    const SizedBox(height: 20),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          nutritionCard("assets/icons/fire.svg", "180kCal"),
+                          nutritionCard("assets/icons/fats.svg", "30g fats"),
+                          nutritionCard("assets/icons/protein.svg", "20kCal"),
+                          nutritionCard("assets/icons/carb.svg", "40g carbs"),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    const Text(
+                      "Descriptions",
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+                    ),
+                    const SizedBox(height: 20),
+                    descriptions(),
+                    const SizedBox(height: 20),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 40),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            "Ingredients That You \nWill Need",
+                            style: TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.w600),
+                          ),
+                          Text("${ingredients.length} items"),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    ingredientsCard(),
+                    const SizedBox(height: 20),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 40),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            "Step by Step",
+                            style: TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.w600),
+                          ),
+                          Text("${ingredients.length} items"),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    const CustomEasyStep(),
+                  ],
+                ),
+              ),
+            ),
           ])),
         ],
       ),
